@@ -28,11 +28,8 @@ int main(void)
 	{
 		av = tokenize_av(buffer);
 		if (av)
-		{
 			if (check_for_builtins(buffer, av, env) == NULL)
-				if (check_for_path(av, env) == 0)
-					execute_cwd(av, env);
-		}
+				check_for_path(av, env);
 		free(buffer);
 		free(av);
 		if (is_pipe == 0)
