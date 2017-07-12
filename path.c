@@ -59,7 +59,7 @@ void check_for_path(char **av, env_t **env)
 	char *path_dup = NULL, *check;
 	size_t i = 0;
 	char **path_tokens;
-	struct stat *buf;
+	struct stat buf;
 
 	path = find_path(*env);
 	path_dup = _strdup(path->value);
