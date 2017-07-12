@@ -32,7 +32,7 @@ typedef struct environment
 typedef struct builtins
 {
 	char *name;
-	void (*f)(char *[], env_t **);
+	void (*f)(char *, char *[], env_t **);
 } builtins_t;
 
 char *_strdup(char *strtodup);
@@ -42,6 +42,6 @@ ssize_t _puts(char *str);
 char **tokenize_av(char *buffer);
 void (*check_for_builtins(char *av[], env_t **env))(char *[], env_t **);
 int check_for_path(char *av[], env_t **env);
-
+int new_exit(char *buffer, *av, env_t **env);
 
 #endif /* _SHELL_H_ */
