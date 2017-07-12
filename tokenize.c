@@ -32,4 +32,5 @@ char **tokenize(char *buffer, char *delimiter)
 		}
 		buffer = NULL;
 	}
+	return (tokens);
 }
