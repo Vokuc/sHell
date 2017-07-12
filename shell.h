@@ -32,15 +32,15 @@ typedef struct environment
 typedef struct builtins
 {
 	char *name;
-	void (*f)(char *, char *[], env_t **);
+	void (*f)();
 } builtins_t;
 
 char *_strdup(char *strtodup);
 int _strcmpr(char *strcmp1, char *strcmp2);
 char *_strcat(char *strc1, char *strc2);
 ssize_t _puts(char *str);
-char **tokenize_av(char *buffer);
-void (*check_for_builtins(char *av[], env_t **env))(char *[], env_t **);
+char **tokenize(char *buffer, char *delimiter);
+void (*check_for_builtins(char *, char *av[], env_t **env))();
 int check_for_path(char *av[], env_t **env);
 int new_exit(char *buffer, *av, env_t **env);
 

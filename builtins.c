@@ -7,7 +7,7 @@
  * @buffer: buffer
  * Return: pointer to the function or NULL
  */
-void (*check_for_builtins(char *buffer, char *av[], env_t **env))(char *, char *[], env_t **)
+void (*check_for_builtins(char *buffer, char *av[], env_t **env))()
 {
 	unsigned int i;
 	builtins_t check[] = {
