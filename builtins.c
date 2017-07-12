@@ -27,3 +27,18 @@ void (*check_for_builtins(char *av[], env_t **env))(char *[], env_t **)
 		check[i].f(av, env);
 	return (check[i].f);
 }
+
+/**
+ * _exit - exit program
+ * @buffer: buffer
+ * @av: arguments
+ * @env: environment
+ * Return: 0 on success
+ */
+int new_exit(char *buffer, *av, env_t **env)
+{
+	free(buffer);
+	free(av);
+	free_env(env); /* Write function free_env */
+	exit(0); /* add precision, example 98, etc */
+}
