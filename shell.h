@@ -10,6 +10,9 @@
 #include <sys/wait.h>
 
 extern char **environ;
+char *_strdup(char *strtodup);
+int _strcmpr(char *strcmp1, char *strcmp2);
+char *_strcat(char *strc1, char *strc2);
 
 /**
  * struct environment - struct for a linked list of environment variables
