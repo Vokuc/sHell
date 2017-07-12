@@ -35,7 +35,7 @@ void (*check_for_builtins(char *buffer, char *av[], env_t **env))()
  * @env: environment
  * Return: 0 on success
  */
-int new_exit(char *buffer, *av, env_t **env)
+int new_exit(char *buffer, char *av, env_t **env)
 {
 	free(buffer);
 	free(av);

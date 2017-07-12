@@ -35,13 +35,16 @@ typedef struct builtins
 	void (*f)();
 } builtins_t;
 
+ssize_t _puts(char *str);
 char *_strdup(char *strtodup);
 int _strcmpr(char *strcmp1, char *strcmp2);
 char *_strcat(char *strc1, char *strc2);
-ssize_t _puts(char *str);
 char **tokenize(char *buffer, char *delimiter);
+void *_realloc(char *ptr, size_t *size, size_t bytes);
 void (*check_for_builtins(char *, char *av[], env_t **env))();
+int new_exit(char *buffer, char *av, env_t **env);
 int check_for_path(char *av[], env_t **env);
-int new_exit(char *buffer, *av, env_t **env);
+void path_execute(char *command, char **args);
+env_t *find_path(env_t *head);
 
 #endif /* _SHELL_H_ */
