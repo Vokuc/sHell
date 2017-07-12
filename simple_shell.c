@@ -8,7 +8,7 @@
 int main(void)
 {
 	char *buffer = NULL;
-	char **av;
+	char **av = NULL;
 	size_t len_buffer = 0;
 	unsigned int is_pipe = 0;
 	env_t *env = NULL;

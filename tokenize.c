@@ -9,8 +9,8 @@
  */
 char **tokenize(char *buffer, char *delimiter)
 {
-	char **tokens;
-	size_t i, mcount = 10;
+	char **tokens = NULL;
+	size_t i = 0, mcount = 10;
 
 	tokens = malloc(sizeof(char *) * mcount);
 	if (tokens == NULL)
