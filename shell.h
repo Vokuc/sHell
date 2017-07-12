@@ -51,7 +51,8 @@ char **tokenize(char *buffer, char *delimiter);
 void *_realloc(char *ptr, size_t *size, size_t bytes);
 
 void (*check_for_builtins(char *, char *av[], env_t **env))();
-int new_exit(char *buffer, char *av, env_t **env);
+void new_exit(char *buffer, char *av, env_t **env);
+void _env(env_t **env);
 
 int check_for_path(char *av[], env_t **env);
 void path_execute(char *command, char **args);
