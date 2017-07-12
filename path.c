@@ -81,9 +81,9 @@ void check_for_path(char **av, env_t **env)
 		free(check);
 	}
 	free(path_dup);
-	free(path_tokens);
 	if (path_tokens[i] == NULL)
 		execute_cwd(av);
+	free(path_tokens);
 	return;
 }
 
