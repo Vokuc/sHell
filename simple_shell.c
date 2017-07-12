@@ -9,7 +9,7 @@ int main(void)
 {
 	char *buffer = NULL;
 	char **av;
-	size_t len_buffer = 0, i = 0;
+	size_t len_buffer = 0;
 	unsigned int is_pipe = 0;
 	env_t *env = NULL;
 	struct stat st;
@@ -26,7 +26,7 @@ int main(void)
 		_puts("$ ");
 	while (getline(&buffer, &len_buffer, stdin) != -1)
 	{
-		av = tokenize(buffer);
+		av = tokenize(buffer, "\n \t");
 		if (av)
 			if (check_for_builtins(buffer, av, &env) == NULL)
 				check_for_path(av, &env);
