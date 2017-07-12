@@ -72,7 +72,7 @@ void check_for_path(char **av, env_t **env)
 	for (i = 0; path_tokens[i]; i++)
 	{
 		check = _strcat(path_tokens[i], av[0]);
-		if (stat(check, buf) == 0)
+		if (stat(check, &buf) == 0)
 		{
 			path_execute(check, av);
 			free(check);
