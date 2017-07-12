@@ -4,14 +4,14 @@
  * check_for_builtins - checks if the command is a builtin
  * @av: argument list to the shell
  * @env: environment list
- *
+ * @buffer: buffer
  * Return: pointer to the function or NULL
  */
-void (*check_for_builtins(char *av[], env_t **env))(char *[], env_t **)
+void (*check_for_builtins(char *buffer, char *av[], env_t **env))(char *, char *[], env_t **)
 {
 	unsigned int i;
 	builtins_t check[] = {
-		{"exit", _exit}
+		{"exit", new_exit}
 		{"env", _env}
 		{"setenv", NULL}
 		{"unsetenv", NULL}
@@ -24,12 +24,12 @@ void (*check_for_builtins(char *av[], env_t **env))(char *[], env_t **)
 			break;
 	}
 	if (check[i].f != NULL)
-		check[i].f(av, env);
+		check[i].f(buffer, av, env);
 	return (check[i].f);
 }
 
 /**
- * _exit - exit program
+ * new_exit - exit program
  * @buffer: buffer
  * @av: arguments
  * @env: environment
