@@ -27,7 +27,7 @@ int main(void)
 	while (getline(&buffer, &len_buffer, stdin) != -1)
 	{
 		av = tokenize(buffer, "\n \t");
-		if (av)
+		if (av && av[0])
 			if (check_for_builtins(buffer, av, &env) == NULL)
 				check_for_path(av, &env);
 		free(buffer);
