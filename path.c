@@ -51,7 +51,7 @@ env_t *find_path(env_t *head)
  * @av: array of arguments
  * @env: linked list of environment variables
  *
- * Return: 1 on success, 0 on failure, -1 on fatal error
+ * Return: void
  */
 void check_for_path(char **av, env_t **env)
 {
@@ -84,7 +84,6 @@ void check_for_path(char **av, env_t **env)
 	if (path_tokens[i] == NULL)
 		execute_cwd(av);
 	free(path_tokens);
-	return;
 }
 
 /**
