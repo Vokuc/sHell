@@ -2,17 +2,20 @@
 
 /**
  * main - main function for the shell
+ * @argc: number of arguments passed to main
+ * @argv: array of arguments passed to main
  *
  * Return: 0 or exit status, or ?
  */
-int main(void)
+int main(int argc __attribute__((unused)), char **argv)
 {
 	size_t len_buffer = 0;
 	unsigned int is_pipe = 0;
 	env_t *env = NULL;
 	struct stat st;
-	vars_t vars = {NULL, NULL, NULL, 0};
+	vars_t vars = {NULL, NULL, NULL, 0, NULL};
 
+	vars.argv = argv;
 	env = make_env(environ);
 	vars.env = &env;
 	if (fstat(STDIN_FILENO, &st) == -1)

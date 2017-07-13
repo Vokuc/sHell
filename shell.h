@@ -26,10 +26,11 @@ typedef struct environment
 
 /**
  * struct variables - variables
- * @av: arguments
- * @buffer: buffer
+ * @av: command line arguments
+ * @buffer: buffer of command
  * @env: environment variables
  * @count: count of commands entered
+ * @argv: arguments at opening of shell
  */
 typedef struct variables
 {
@@ -37,6 +38,7 @@ typedef struct variables
 	char *buffer;
 	env_t **env;
 	size_t count;
+	char **argv;
 } vars_t;
 
 /**
@@ -70,8 +72,8 @@ void new_exit(vars_t *vars);
 void _env(vars_t *vars);
 
 void check_for_path(vars_t *vars);
-void path_execute(char *command, char **args);
+int path_execute(char *command, vars_t *vars);
 env_t *find_path(env_t *head);
-void execute_cwd(char **av);
+int execute_cwd(vars_t *vars);
 
 #endif /* _SHELL_H_ */
