@@ -25,6 +25,21 @@ typedef struct environment
 } env_t;
 
 /**
+ * struct variables - variables
+ * @av: arguments
+ * @buffer: buffer
+ * @env: environment variables
+ * @count: count of commands entered
+ */
+typedef struct variables
+{
+	char **av;
+	char *buffer;
+	env_t **env;
+	size_t count;
+} vars_t;
+
+/**
  * struct builtins - struct for the builtin functions
  * @name: name of builtin command
  * @f: function for corresponding builtin
@@ -32,7 +47,7 @@ typedef struct environment
 typedef struct builtins
 {
 	char *name;
-	void (*f)();
+	void (*f)(vars_t *);
 } builtins_t;
 
 char *make_key(char *str);
@@ -50,11 +65,11 @@ unsigned int _strlen(char *str);
 char **tokenize(char *buffer, char *delimiter);
 char **_realloc(char **ptr, size_t *size);
 
-void (*check_for_builtins(char *, char **av, env_t **env))();
-void new_exit(char *buffer, char *av, env_t **env);
-void _env(char *b, char **av, env_t **env);
+void (*check_for_builtins(vars_t *vars))(vars_t *vars);
+void new_exit(vars_t *vars);
+void _env(vars_t *vars);
 
-void check_for_path(char **av, env_t **env);
+void check_for_path(vars_t *vars);
 void path_execute(char *command, char **args);
 env_t *find_path(env_t *head);
 void execute_cwd(char **av);
