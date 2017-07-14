@@ -70,6 +70,9 @@ char **_realloc(char **ptr, size_t *size);
 void (*check_for_builtins(vars_t *vars))(vars_t *vars);
 void new_exit(vars_t *vars);
 void _env(vars_t *vars);
+void new_setenv(vars_t *vars);
+void new_unsetenv(vars_t *vars);
+void change_env_value(char *val, env_t *node);
 
 void check_for_path(vars_t *vars);
 int path_execute(char *command, vars_t *vars);
