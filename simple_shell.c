@@ -30,7 +30,7 @@ int main(int argc __attribute__((unused)), char **argv)
 	while (getline(&(vars.buffer), &len_buffer, stdin) != -1)
 	{
 		vars.count++;
-		vars.av = tokenize(vars.buffer, "\n \t");
+		vars.av = tokenize(vars.buffer, "\n \t\r");
 		if (vars.av && vars.av[0])
 			if (check_for_builtins(&vars) == NULL)
 				check_for_path(&vars);
