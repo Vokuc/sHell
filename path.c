@@ -22,11 +22,16 @@ int path_execute(char *command, vars_t *vars)
 		if (execve(command, vars->av, vars->env) == -1)
 		{
 			perror("Fatal Error");
+			vars->status = 127;
 			return(-1);
 		}
 	}
 	else
+	{
 		wait(&vars->status);
+		if (WIFEXITED(vars->status))
+			vars->status = WEXITSTATUS(vars->status);
+	}
 	return (0);
 }
 
@@ -107,23 +112,36 @@ void check_for_path(vars_t *vars)
 int execute_cwd(vars_t *vars)
 {
 	pid_t child_pid;
+	struct stat buf;
 
-	child_pid = fork();
-	if (child_pid == -1)
+	if (stat(vars->av[0], &buf) == 0)
 	{
-		perror("Fatal Error");
-		return (-1);
-	}
-	if (child_pid == 0)
-	{
-		if (execve(vars->av[0], vars->av, vars->env) == -1)
+		child_pid = fork();
+		if (child_pid == -1)
 		{
-			perror("Error:");
-			vars->status = 127 * 256;
-			return(-1);
+			perror("Fatal Error");
+			return (-1);
+		}
+		if (child_pid == 0)
+		{
+			if (execve(vars->av[0], vars->av, vars->env) == -1)
+			{
+				perror("Error:");
+				vars->status = 127;
+				return(-1);
+			}
+		}
+		else
+		{
+			wait(&vars->status);
+			if (WIFEXITED(vars->status))
+				vars->status = WEXITSTATUS(vars->status);
 		}
 	}
 	else
-		wait(&vars->status);
+	{
+		perror("not found");
+		vars->status = 127;
+	}
 	return (0);
 }
