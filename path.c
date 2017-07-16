@@ -11,33 +11,41 @@ int path_execute(char *command, vars_t *vars)
 {
 	pid_t child_pid;
 
-	child_pid = fork();
-	if (child_pid == -1)
+	if (access(command, X_OK) == 0)
 	{
-		perror("Fatal Error");
-		return (-1);
-	}
-	if (child_pid == 0)
-	{
-		if (execve(command, vars->av, vars->env) == -1)
+		child_pid = fork();
+		if (child_pid == -1)
 		{
-			perror("Fatal Error");
-			vars->status = 127;
-			return(-1);
+			print_error(vars, NULL);
+			return (-1);
+		}
+		if (child_pid == 0)
+		{
+			if (execve(command, vars->av, vars->env) == -1)
+			{
+				print_error(vars, NULL);
+				vars->status = 127;
+				return (-1);
+			}
+		}
+		else
+		{
+			wait(&vars->status);
+			if (WIFEXITED(vars->status))
+				vars->status = WEXITSTATUS(vars->status);
 		}
 	}
 	else
 	{
-		wait(&vars->status);
-		if (WIFEXITED(vars->status))
-			vars->status = WEXITSTATUS(vars->status);
+		print_error(vars, ": Permission denied\n");
+		vars->status = 126;
 	}
 	return (0);
 }
 
 /**
  * find_path - finds the PATH variable
- * @head: head of the linked list of environment variables
+ * @env: array of environment variables
  *
  * Return: pointer to the node that contains the PATH, or NULL on failure
  */
@@ -80,7 +88,7 @@ void check_for_path(vars_t *vars)
 		path_tokens = tokenize(path_dup, ":");
 		if (path_tokens == NULL)
 		{
-			perror("Fatal Error");
+			print_error(vars, NULL);
 			return;
 		}
 		for (i = 0; path_tokens[i]; i++)
@@ -97,7 +105,7 @@ void check_for_path(vars_t *vars)
 		free(path_dup);
 	}
 	if (path == NULL || path_tokens[i] == NULL)
-			r = execute_cwd(vars);
+		r = execute_cwd(vars);
 	free(path_tokens);
 	if (r == -1)
 		new_exit(vars);
@@ -116,31 +124,37 @@ int execute_cwd(vars_t *vars)
 
 	if (stat(vars->av[0], &buf) == 0)
 	{
-		child_pid = fork();
-		if (child_pid == -1)
+		if (access(vars->av[0], X_OK) == 0)
 		{
-			perror("Fatal Error");
-			return (-1);
-		}
-		if (child_pid == 0)
-		{
-			if (execve(vars->av[0], vars->av, vars->env) == -1)
+			child_pid = fork();
+			if (child_pid == -1)
+				print_error(vars, NULL);
+			if (child_pid == 0)
 			{
-				perror("Error:");
-				vars->status = 127;
-				return(-1);
+				if (execve(vars->av[0], vars->av, vars->env) == -1)
+				{
+					print_error(vars, NULL);
+					vars->status = 127;
+				}
 			}
+			else
+			{
+				wait(&vars->status);
+				if (WIFEXITED(vars->status))
+					vars->status = WEXITSTATUS(vars->status);
+				return (0);
+			}
+			return (-1);
 		}
 		else
 		{
-			wait(&vars->status);
-			if (WIFEXITED(vars->status))
-				vars->status = WEXITSTATUS(vars->status);
+			print_error(vars, ": Permission denied\n");
+			vars->status = 126;
 		}
 	}
 	else
 	{
-		perror("not found");
+		print_error(vars, ": not found\n");
 		vars->status = 127;
 	}
 	return (0);
