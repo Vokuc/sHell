@@ -11,7 +11,7 @@ void (*check_for_builtins(vars_t *vars))(vars_t *vars)
 	builtins_t check[] = {
 		{"exit", new_exit},
 		{"env", _env},
-		{"setenv", NULL},
+		{"setenv", new_setenv},
 		{"unsetenv", NULL},
 		{NULL, NULL}
 	};
@@ -53,5 +53,39 @@ void _env(vars_t *vars)
 	{
 		_puts(vars->env[i]);
 		_puts("\n");
+	}
+}
+
+/**
+ * new_setenv - create a new environment variable, or edit an existing variable
+ * @vars: pointer to struct of variables
+ *
+ * Return: void
+ */
+void new_setenv(vars_t *vars)
+{
+	char **key;
+	char *var;
+
+	if (vars->av[1] == NULL || vars->av[2] == NULL)
+	{
+		print_error(vars, ": Incorrect number of arguments\n");
+		return;
+	}
+	key = find_key(vars->env, vars->av[1]);
+	if (key == NULL)
+		add_key(vars);
+	else
+	{
+		var = add_value(vars);
+		if (var == NULL)
+		{
+			free(vars->buffer);
+			free(vars->av);
+			free_env(vars->env);
+			exit(1);
+		}
+		free(*key);
+		*key = var;
 	}
 }
