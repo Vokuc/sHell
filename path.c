@@ -17,8 +17,10 @@ int path_execute(char *command, vars_t *vars)
 		if (child_pid == -1)
 			print_error(vars, NULL);
 		if (child_pid == 0)
+		{
 			if (execve(command, vars->av, vars->env) == -1)
 				print_error(vars, NULL);
+		}
 		else
 		{
 			wait(&vars->status);
@@ -126,8 +128,10 @@ int execute_cwd(vars_t *vars)
 				if (child_pid == -1)
 					print_error(vars, NULL);
 				if (child_pid == 0)
+				{
 					if (execve(vars->av[0], vars->av, vars->env) == -1)
 						print_error(vars, NULL);
+				}
 				else
 				{
 					wait(&vars->status);
