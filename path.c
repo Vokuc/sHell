@@ -15,25 +15,19 @@ int path_execute(char *command, vars_t *vars)
 	{
 		child_pid = fork();
 		if (child_pid == -1)
-		{
 			print_error(vars, NULL);
-			return (-1);
-		}
 		if (child_pid == 0)
-		{
 			if (execve(command, vars->av, vars->env) == -1)
-			{
 				print_error(vars, NULL);
-				vars->status = 127;
-				return (-1);
-			}
-		}
 		else
 		{
 			wait(&vars->status);
 			if (WIFEXITED(vars->status))
 				vars->status = WEXITSTATUS(vars->status);
+			return (0);
 		}
+		vars->status = 127;
+		return (-1);
 	}
 	else
 	{
@@ -124,38 +118,53 @@ int execute_cwd(vars_t *vars)
 
 	if (stat(vars->av[0], &buf) == 0)
 	{
-		if (access(vars->av[0], X_OK) == 0)
+		if (check_for_dir(vars->av[0]) == 0)
 		{
-			child_pid = fork();
-			if (child_pid == -1)
-				print_error(vars, NULL);
-			if (child_pid == 0)
+			if (access(vars->av[0], X_OK) == 0)
 			{
-				if (execve(vars->av[0], vars->av, vars->env) == -1)
-				{
+				child_pid = fork();
+				if (child_pid == -1)
 					print_error(vars, NULL);
-					vars->status = 127;
+				if (child_pid == 0)
+					if (execve(vars->av[0], vars->av, vars->env) == -1)
+						print_error(vars, NULL);
+				else
+				{
+					wait(&vars->status);
+					if (WIFEXITED(vars->status))
+						vars->status = WEXITSTATUS(vars->status);
+					return (0);
 				}
+				vars->status = 127;
+				return (-1);
 			}
 			else
 			{
-				wait(&vars->status);
-				if (WIFEXITED(vars->status))
-					vars->status = WEXITSTATUS(vars->status);
-				return (0);
+				print_error(vars, ": Permission denied\n");
+				vars->status = 126;
 			}
-			return (-1);
-		}
-		else
-		{
-			print_error(vars, ": Permission denied\n");
-			vars->status = 126;
+			return (0);
 		}
 	}
-	else
-	{
-		print_error(vars, ": not found\n");
-		vars->status = 127;
-	}
+	print_error(vars, ": not found\n");
+	vars->status = 127;
 	return (0);
+}
+
+/**
+ * check_for_dir - checks if the command is a part of a path
+ * @str: command
+ *
+ * Return: 0 on success, -1 on failure
+ */
+int check_for_dir(char *str)
+{
+	unsigned int i;
+
+	for (i = 0; str[i]; i++)
+	{
+		if (str[i] == '/')
+			return (0);
+	}
+	return (-1);
 }
