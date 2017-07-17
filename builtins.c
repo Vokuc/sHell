@@ -54,6 +54,7 @@ void _env(vars_t *vars)
 		_puts(vars->env[i]);
 		_puts("\n");
 	}
+	vars->status = 0;
 }
 
 /**
@@ -88,6 +89,7 @@ void new_setenv(vars_t *vars)
 		free(*key);
 		*key = var;
 	}
+	vars->status = 0;
 }
 
 /**
@@ -129,4 +131,5 @@ void new_unsetenv(vars_t *vars)
 	free(*key);
 	free(vars->env);
 	vars->env = newenv;
+	vars->status = 0;
 }
