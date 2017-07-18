@@ -38,7 +38,8 @@ int main(int argc __attribute__((unused)), char **argv, char **environment)
 	signal(SIGINT, sig_handler);
 	if (fstat(STDIN_FILENO, &st) == -1)
 	{
-		print_error(&vars, NULL);
+		perror("Fatal Error");
+		free_env(vars.env);
 		exit(1);
 	}
 	if ((st.st_mode & S_IFMT) == S_IFIFO)
