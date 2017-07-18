@@ -35,7 +35,7 @@ void new_exit(vars_t *vars)
 {
 	int status;
 
-	if (vars->av[1] != NULL)
+	if (_strcmpr(vars->av[0], "exit") == 0 && vars->av[1] != NULL)
 	{
 		status = _atoi(vars->av[1]);
 		if (status == -1)
