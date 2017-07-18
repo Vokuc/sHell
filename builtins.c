@@ -95,12 +95,7 @@ void new_setenv(vars_t *vars)
 	{
 		var = add_value(vars);
 		if (var == NULL)
-		{
-			free(vars->buffer);
-			free(vars->av);
-			free_env(vars->env);
 			exit(127);
-		}
 		free(*key);
 		*key = var;
 	}
