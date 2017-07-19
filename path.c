@@ -5,7 +5,7 @@
  * @command: full path to the command
  * @vars: pointer to struct of variables
  *
- * Return: 0 on succcess, -1 on failure
+ * Return: 0 on succcess, 1 on failure
  */
 int path_execute(char *command, vars_t *vars)
 {
@@ -31,7 +31,7 @@ int path_execute(char *command, vars_t *vars)
 			return (0);
 		}
 		vars->status = 127;
-		return (-1);
+		return (1);
 	}
 	else
 	{
@@ -72,12 +72,10 @@ char *find_path(char **env)
  */
 void check_for_path(vars_t *vars)
 {
-	char *path;
-	char *path_dup = NULL, *check;
-	unsigned int i = 0;
+	char *path, *path_dup = NULL, *check = NULL;
+	unsigned int i = 0, r = 0;
 	char **path_tokens;
 	struct stat buf;
-	int r = 0;
 
 	if (check_for_dir(vars->av[0]))
 		r = execute_cwd(vars);
@@ -88,13 +86,7 @@ void check_for_path(vars_t *vars)
 		{
 			path_dup = _strdup(path + 5);
 			path_tokens = tokenize(path_dup, ":");
-			if (path_tokens == NULL)
-			{
-				free(path_dup);
-				vars->status = 127;
-				new_exit(vars);
-			}
-			for (i = 0; path_tokens[i]; i++)
+			for (i = 0; path_tokens && path_tokens[i]; i++, free(check))
 			{
 				check = _strcat(path_tokens[i], vars->av[0]);
 				if (stat(check, &buf) == 0)
@@ -103,9 +95,13 @@ void check_for_path(vars_t *vars)
 					free(check);
 					break;
 				}
-				free(check);
 			}
 			free(path_dup);
+			if (path_tokens == NULL)
+			{
+				vars->status = 127;
+				new_exit(vars);
+			}
 		}
 		if (path == NULL || path_tokens[i] == NULL)
 		{
@@ -114,7 +110,7 @@ void check_for_path(vars_t *vars)
 		}
 		free(path_tokens);
 	}
-	if (r == -1)
+	if (r == 1)
 		new_exit(vars);
 }
 
@@ -122,7 +118,7 @@ void check_for_path(vars_t *vars)
  * execute_cwd - executes the command in the current working directory
  * @vars: pointer to struct of variables
  *
- * Return: 0 on success, -1 on failure
+ * Return: 0 on success, 1 on failure
  */
 int execute_cwd(vars_t *vars)
 {
@@ -151,7 +147,7 @@ int execute_cwd(vars_t *vars)
 				return (0);
 			}
 			vars->status = 127;
-			return (-1);
+			return (1);
 		}
 		else
 		{
