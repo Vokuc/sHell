@@ -11,7 +11,7 @@
 ## Description
 1. simple_shell is a command line interpreter, or shell, in the tradition of the first Unix shell written by Ken Thompson in 1971.  This shell is intentionally minimalistic, yet includes the basic functionality of a traditional Unix-like command line user interface. 
 2. Standard functions and system calls employed in simple_shell include:
-   `access, execve, exit, fork, free, fstat, getline, malloc, perror, signal, stat, wait, write`
+   `access, execve, exit, fork, free, fstat, getline, malloc, perror, signal, stat, wait, write.`
 2. Why do you use it?: `etc, etc, etc`
 3. Contact `janedoe@gmail.com`
 
@@ -24,9 +24,11 @@
 1. How do you use it?  `example is required`
 2. second example
 
-##Contributing
-   - `darkened background section` (HTTPS)
-   -  start with `./simple_shell`
-##Credits
+## Authors
+Alexa Orrico | [GitHub](https://github.com/alexaorrico) | [Twitter](https://twitter.com/alexa_orrico)
 
+John Cottrell | [GitHub](https://github.com/johncottrell) | [Twitter](https://twitter.com/johnpeterco)
+##Credits
+   - `da, da, da, da, da` (HTTPS)
+   -  start with `./simple_shell`
 ##License
