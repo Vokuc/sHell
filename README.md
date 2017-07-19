@@ -1,5 +1,7 @@
+# simple_shell
+
 <img src="https://cdn3.iconfinder.com/data/icons/egg/\
-500/Egg_food_cracked_whipped-512.png" alt="image of egg shell" width="100" height="100">
+500/Egg_food_cracked_whipped-512.png" alt="image of egg shell">
 
 ## Table of Contents
 * [Description](#description)
