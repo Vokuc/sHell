@@ -2,11 +2,11 @@
 
 ## Table of Contents
 * [Description](#description)
-* [Installation] (#installation)
-* [Usage] (#usage)
-* [Contributing] (#contributin)
-* [Credits] (#credits)
-* [License] (#license)
+* [Installation](#installation)
+* [Usage](#usage)
+* [Contributing](#contributin)
+* [Credits](#credits)
+* [License](#license)
 
 ## Description
 1. What is it?
