@@ -9,7 +9,8 @@
 * [License](#license)
 
 ## Description
-1. What is it?
+1. simple_shell is a command line interpreter, or shell, in the tradition of the first Unix shell written by Ken Thompson in 1971.  This shell is intentionally minimalistic, yet includes the basic functionality of a traditional Unix-like command line user interface. 
+2. What is it?
    - `darkened background section` (HTTPS)
    -  start with `./simple_shell`
 2. Why do you use it?: `etc, etc, etc`
