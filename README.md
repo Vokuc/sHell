@@ -1,5 +1,5 @@
-# <img
-src="https://cdn3.iconfinder.com/data/icons/egg/500/Egg_food_cracked_whipped-512.png" width="64" height="64" /> simple_shell
+![image of egg shell](https://cdn3.iconfinder.com/data/icons/egg/500/Egg_food_cracked_whipped-512.png)
+
 
 ## Table of Contents
 * [Description](#description)
@@ -10,7 +10,7 @@ src="https://cdn3.iconfinder.com/data/icons/egg/500/Egg_food_cracked_whipped-512
 * [License](#license)
 
 ## Description
-simple_shell is a command line interpreter, or shell, in the tradition of the first Unix shell written by Ken Thompson in 1971.  This shell is intentionally minimalistic, yet includes the basic functionality of a traditional Unix-like command line user interface. 
+simple_shell is a command line interpreter, or shell, in the tradition of the first Unix shell written by Ken Thompson in 1971. This shell is intentionally minimalistic, yet includes the basic functionality of a traditional Unix-like command line user interface. 
 Standard functions and system calls employed in simple_shell include:
    `access, execve, exit, fork, free, fstat, getline, malloc, perror, signal, stat, wait, write.`
 
@@ -28,11 +28,12 @@ simple_shell is designed to run in the `Ubuntu 14.04.5 LTS` linux environment an
 ## Usage
 
 The simple_shell is designed to execute commands in a similar manner to sh, however with more limited functionality.
-Supported commands include:
-	  - env
-	  - exit
-	  - setenv
-	  - unsetenv
+Supported commands included.
+
+* env
+* exit
+* setenv
+* unsetenv
 
 
 ## Authors
@@ -40,5 +41,6 @@ Alexa Orrico | [GitHub](https://github.com/alexaorrico) | [Twitter](https://twit
 
 John Cottrell | [GitHub](https://github.com/johncottrell) | [Twitter](https://twitter.com/johnpeterco)
 
-##License
+## License
 simple_shell is open source and therefore free to download and use without permission.
+d
