@@ -3,11 +3,11 @@
 
 ## Table of Contents
 * [Description](#description)
-* [File Structure](#file structure)
+* [File Structure](#file)
 * [Requirements](#requirements)
 * [Installation](#installation)
 * [Usage](#usage)
-* [Example of Use](#example of use)
+* [Example of Use](#example)
 * [Authors](#authors)
 * [License](#license)
 
