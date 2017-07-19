@@ -65,7 +65,7 @@ The simple_shell is designed to execute commands in a similar manner to sh, howe
 `ls -al`
 
 #### Builtins
-`env`
+`exit`
 
 
 ## Authors
