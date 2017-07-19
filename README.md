@@ -19,7 +19,7 @@ simple_shell is designed to run in the `Ubuntu 14.04.5 LTS` linux environment an
 
 ## Installation
 1. Compile: `gcc -Wall -Werror -Wextra -pedantic *.c -o hsh`
-2. Run the shell: `./hsh'
+2. Run the shell: `./hsh`
 
 ## Usage
 1. How do you use it?  `example is required`
