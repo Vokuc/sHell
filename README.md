@@ -16,14 +16,13 @@ Standard functions and system calls employed in simple_shell include:
 
 ## Requirements
 
-simple_shell is designed to run in the `Ubuntu 14.04.5 LTS` linux environment and to be compiled using the GNU compiler collection v. `gcc 4.8.4` with flags`-Wall, -Werror, -Wextra, and -pedantic.`
+simple_shell is designed to run in the `Ubuntu 14.04 LTS` linux environment and to be compiled using the GNU compiler collection v. `gcc 4.8.4` with flags`-Wall, -Werror, -Wextra, and -pedantic.`
 
 ## Installation
 
    - Compile: `gcc -Wall -Werror -Wextra -pedantic *.c -o hsh`
    - Run the shell in interactive mode: `./hsh`
-   - Or run the shell in non-interactive mode:
-   - example `echo "pwd" | ./hsh`
+   - Or run the shell in non-interactive mode: example `echo "pwd" | ./hsh`
 
 ## Usage
 
