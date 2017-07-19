@@ -1,4 +1,4 @@
-.TH simple_shell "1"
+.TH hsh 1 "July 19, 2017" "1.0" "hsh General Commands Manual"
 
 .SH NAME
 
@@ -9,7 +9,7 @@
 .SH SYNOPSIS
 
 .B  ./hsh
-.I command [argument]
+.I (no options yet)
 
 
 
