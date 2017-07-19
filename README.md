@@ -8,6 +8,7 @@
 * [Installation](#installation)
 * [Usage](#usage)
 * [Example of Use](#example-of-use)
+* [Bugs](#bugs)
 * [Authors](#authors)
 * [License](#license)
 
@@ -67,6 +68,8 @@ simple_shell is designed to run in the `Ubuntu 14.04 LTS` linux environment and 
 
 ## Installation
 
+   - Clone this repository: `git clone "https://github.com/alexaorrico/simple_shell.git"`
+   - Change directories into the repository: `cd simple_shell`
    - Compile: `gcc -Wall -Werror -Wextra -pedantic *.c -o hsh`
    - Run the shell in interactive mode: `./hsh`
    - Or run the shell in non-interactive mode: example `echo "pwd" | ./hsh`
@@ -126,6 +129,8 @@ drwxrwxr-x  8 vagrant vagrant  4096 Jul 19 22:34 .git
 -rw-rw-r--  1 vagrant vagrant  2111 Jul 16 01:10 strfunc.c
 -rw-rw-r--  1 vagrant vagrant   719 Jul 19 21:46 tokenize.c
 ```
+## Bugs
+At this time, there are no known bugs.
 
 ## Authors
 Alexa Orrico | [GitHub](https://github.com/alexaorrico) | [Twitter](https://twitter.com/alexa_orrico)
