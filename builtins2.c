@@ -113,6 +113,5 @@ int _atoi(char *str)
 	}
 	if (i > digits)
 		return (-1);
-	printf("%d\n", num);
 	return (num);
 }
