@@ -1,7 +1,6 @@
 # simple_shell
 
-![simple_shell]
-(http://www.istockphoto.com/gb/vector/egg-shell-icon-simple-style-gm685062092-125918897)
+src="http://www.istockphoto.com/gb/vector/egg-shell-icon-simple-style-gm685062092-125918897"
 
 ## Table of Contents
 * [Description](#description)
