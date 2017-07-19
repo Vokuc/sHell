@@ -13,6 +13,7 @@ void (*check_for_builtins(vars_t *vars))(vars_t *vars)
 		{"env", _env},
 		{"setenv", new_setenv},
 		{"unsetenv", new_unsetenv},
+		{"cd", change_dir},
 		{NULL, NULL}
 	};
 
@@ -93,9 +94,15 @@ void new_setenv(vars_t *vars)
 		add_key(vars);
 	else
 	{
-		var = add_value(vars);
+		var = add_value(vars->av[1], vars->av[2]);
 		if (var == NULL)
+		{
+			print_error(vars, NULL);
+			free(vars->buffer);
+			free(vars->av);
+			free_env(vars->env);
 			exit(127);
+		}
 		free(*key);
 		*key = var;
 	}
@@ -111,6 +118,7 @@ void new_setenv(vars_t *vars)
 void new_unsetenv(vars_t *vars)
 {
 	char **key, **newenv;
+
 	unsigned int i, j;
 
 	if (vars->av[1] == NULL)
