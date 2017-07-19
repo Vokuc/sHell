@@ -32,15 +32,15 @@ The simple_shell is designed to execute commands in a similar manner to sh, howe
 - [x] uses the PATH
 - [x] implements builtins
 - [x] handles command line arguments
-- [ ] house getline type function
 - [x] house strtok function
 - [x] uses exit status
 - [x] shell continues upon Crtl+C (**^C**)
+- [x] handles comments (#)
+- [ ] house getline type function
 - [ ] handles **;**
 - [ ] handles **&&**, and **||**
 - [ ] aliases
 - [ ] variable replacement
-- [x] handles comments (#)
 
 
 ### Builtins
@@ -65,7 +65,7 @@ The simple_shell is designed to execute commands in a similar manner to sh, howe
 `ls -al`
 
 #### Builtins
-`env`
+`exit`
 
 
 ## Authors
