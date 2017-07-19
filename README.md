@@ -1,5 +1,7 @@
 ![image of egg shell](https://cdn3.iconfinder.com/data/icons/egg/500/Egg_food_cracked_whipped-512.png){:height="100px" width="100px"}
 
+<img src="https://cdn3.iconfinder.com/data/icons/egg/\
+500/Egg_food_cracked_whipped-512.png" alt="image of egg shell" width="100px" height="100px">
 
 ## Table of Contents
 * [Description](#description)
