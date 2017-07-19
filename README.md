@@ -1,4 +1,4 @@
-## <a href="url"><img src="https://cdn3.iconfinder.com/data/icons/egg/500/Egg_food_cracked_whipped-512.png" align="middle" width="100" height="100"></a> simple_shell
+# <a href="url"><img src="https://cdn3.iconfinder.com/data/icons/egg/500/Egg_food_cracked_whipped-512.png" align="middle" width="100" height="100"></a> simple_shell
 
 
 ## Table of Contents
@@ -27,38 +27,46 @@ simple_shell is designed to run in the `Ubuntu 14.04.5 LTS` linux environment an
 
 ## Usage
 
-The simple_shell is designed to execute commands in a similar manner to sh, however with more limited functionality. The development of this shell is ongoing. The below features will be checked as they become available:
+The simple_shell is designed to execute commands in a similar manner to sh, however with more limited functionality. The development of this shell is ongoing. The below features will be checked as they become available (see man page for complete information on usage):
 
-* Features
+### Features
 - [x] uses the PATH
 - [x] implements builtins
-- [x] handles special characters: \"", ', `, \, *, &, #"
-- [x] moves cursor
 - [x] handles command line arguments
 - [ ] house getline type function
-- [x] employs static variables
 - [x] house strtok function
-- [x] uses the PATH
 - [x] uses exit status
-- [ ] shell continues upon Crtl+C (^C)
-- [ ] handles command separator like sh
-- [ ] && and ||
+- [x] shell continues upon Crtl+C (**^C**)
+- [ ] handles **;**
+- [ ] handles **&&**, and **||**
 - [ ] aliases
 - [ ] variable replacement
-- [ ] $?
-- [ ] $$
-- [ ] comments (#)
+- [x] handles comments (#)
 
 
-* Builtins
+### Builtins
+
 - [x] exit
 - [x] env
-- [x] pwd
-- [x] cd
 - [x] setenv
 - [x] unsetenv
+- [ ] cd
 - [ ] help
 - [ ] history
+
+### Examples
+
+#### Absolute Path
+`/bin/ls `
+
+#### Executable in the PATH
+`ls`
+
+#### Commands with Arguments
+`ls -al`
+
+#### Builtins
+`env`
 
 
 ## Authors
