@@ -1,7 +1,5 @@
-# simple_shell
-
 # <img
-src="http://www.istockphoto.com/gb/vector/egg-shell-icon-simple-style-gm685062092-125918897" />
+src="https://cdn3.iconfinder.com/data/icons/egg/500/Egg_food_cracked_whipped-512.png" width="64" height="64" /> simple_shell
 
 ## Table of Contents
 * [Description](#description)
