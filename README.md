@@ -1,4 +1,4 @@
-![image of egg shell](https://cdn3.iconfinder.com/data/icons/egg/500/Egg_food_cracked_whipped-512.png=100x100)
+![image of egg shell](https://cdn3.iconfinder.com/data/icons/egg/500/Egg_food_cracked_whipped-512.png){:height="100px" width="100px"}
 
 
 ## Table of Contents
