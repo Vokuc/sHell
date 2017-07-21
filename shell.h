@@ -19,6 +19,7 @@
  * @count: count of commands entered
  * @argv: arguments at opening of shell
  * @status: exit status
+ * @commands: commands to execute
  */
 typedef struct variables
 {
@@ -28,6 +29,7 @@ typedef struct variables
 	size_t count;
 	char **argv;
 	int status;
+	char **commands;
 } vars_t;
 
 /**

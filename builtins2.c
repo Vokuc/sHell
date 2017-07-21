@@ -27,6 +27,7 @@ void add_key(vars_t *vars)
 	{
 		print_error(vars, NULL);
 		free(vars->buffer);
+		free(vars->commands);
 		free(vars->av);
 		free_env(vars->env);
 		free(newenv);
