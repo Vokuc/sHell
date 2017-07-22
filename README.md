@@ -86,8 +86,8 @@ The simple_shell is designed to execute commands in a similar manner to sh, howe
 - [x] uses exit status
 - [x] shell continues upon Crtl+C (**^C**)
 - [x] handles comments (#)
+- [x] handles **;**
 - [ ] custom getline type function
-- [ ] handles **;**
 - [ ] handles **&&** and **||**
 - [ ] aliases
 - [ ] variable replacement
